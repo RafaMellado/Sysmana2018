@@ -1,0 +1,115 @@
+<mat-horizontal-stepper [linear]="isLinear" id="stepper" class="invisible">
+  <mat-step [stepControl]="nameForm">
+    <form [formGroup]="nameForm">
+      <ng-template matStepLabel>Añade el nombre de la película</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="El señor de los anillos" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="avatarForm">
+    <form [formGroup]="avatarForm">
+      <ng-template matStepLabel>Avatar</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="www.imagen.com/foto.jpg" pattern="(((http://www)|(http://)| (https://www)|(https://)|(www))[-a-zA-Z0-9@:%_\+.~#?&//=]+)\.(jpg|jpeg|gif|png|bmp|tiff|tga|svg)" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="claseForm">
+    <form [formGroup]="claseForm">
+      <ng-template matStepLabel>Temática</ng-template>
+        <mat-form-field>
+          <mat-select [(value)]="selected" formControlName="thirdCtrl" required>
+            <mat-option value="Infantil">Infantil</mat-option>
+            <mat-option value="Fantasía">Fantasía</mat-option>
+            <mat-option value="Lucha">Lucha</mat-option>
+            <mat-option value="Acción">Acción</mat-option>
+            <mat-option value="Ciencia Ficción">Ciencia Ficción</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <p>Has seleccionado: {{selected}}</p>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+   <mat-step [stepControl]="imagenForm">
+    <form [formGroup]="imagenForm">
+      <ng-template matStepLabel>Imagen</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="www.imagen.com/foto.jpg" pattern="(((http://www)|(http://)| (https://www)|(https://)|(www))[-a-zA-Z0-9@:%_\+.~#?&//=]+)\.(jpg|jpeg|gif|png|bmp|tiff|tga|svg)" formControlName="fourthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+   <mat-step [stepControl]="altForm">
+    <form [formGroup]="altForm">
+      <ng-template matStepLabel>Alt de imagen</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Foto de Jack Sparrow"  formControlName="altCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+   <mat-step [stepControl]="descriptionForm">
+    <form [formGroup]="descriptionForm">
+      <ng-template matStepLabel>Descripción</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Descripción" formControlName="fifthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Añadido</ng-template>
+    La película ha sido añadida correctamente
+    <div>
+      <button (click)="add()" mat-button matStepperPrevious>Finalizar</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+<mat-form-field>
+   <input  matInput class="buscar" [(ngModel)]="searchText" placeholder="Buscar">
+</mat-form-field>
+<div class="container">
+<div *ngFor="let pelicula of peliculas | filter : searchText" class="tarjetas">  
+    <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar>
+              <img class="avatar" src="{{pelicula.avatar}}" />
+          </div>
+          <mat-card-title>{{pelicula.name}}</mat-card-title>
+          <mat-card-subtitle>{{pelicula.tematica}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{pelicula.imagen}}" alt="{{pelicula.alt}}">
+        <mat-card-content>
+          <p>
+            {{pelicula.descripcion}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="remove(pelicula)" id="{{pelicula.id}}" mat-button class="colorB">Eliminar</button>
+        </mat-card-actions>
+      </mat-card>
+</div>
+</div>

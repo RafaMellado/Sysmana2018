@@ -1,0 +1,27 @@
+header{
+    text-align: center;
+    color: red;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+    font-family: 'Roboto';
+    font-size: 3rem;
+    font-weight: bold;
+}
+.button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+button{
+    margin: 0 2%;
+}
+.colorW{
+    background-color: rgba(221, 34, 34, 0.842);
+    color:white;
+}
+
+.img{
+    width: 7%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}

@@ -1,0 +1,65 @@
+.colorB{
+    background-color: rgba(38, 103, 224, 0.842);
+    color:white;
+}
+.example-card {
+    width: 300px;
+   
+  }
+  
+.container{
+    margin: 0 auto;
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    justify-items: center;
+    grid-row-gap: 20px;
+}
+.avatar{
+    height:50px;
+    width: 100%;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+.buscar, mat-form-field{
+    width:30%;
+    text-align: center;
+    display: block;
+    margin: 2% auto;
+}
+
+
+mat-horizontal-stepper{
+    width:80%;
+    margin: 2% auto;
+    box-shadow: 0.2px 0.2px 1.3px rgba(0,0,0,0.4);
+}
+
+mat-card-content{
+    overflow-y: auto;
+    height:175px;
+}
+
+img.mat-card-image{
+    height:300px;
+}
+
+form > p {
+    display: flex;
+    justify-content: center;
+}
+
+.invisible{
+    display:none;  
+    transition: .3s all ease;
+}
+.visible    {
+    display:block;
+    transition: .3s all ease;
+    
+    
+}
+
